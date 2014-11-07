@@ -296,7 +296,7 @@ class BattleGround
         /* Battleground */
         // Get methods:
         char const* GetName() const         { return m_Name; }
-        BattleGroundTypeId GetTypeID() const { return m_TypeID; }
+        BattleGroundTypeId GetTypeID(bool GetRandom = false) const { return GetRandom ? m_RandomTypeID : m_TypeID; }
         BattleGroundBracketId GetBracketId() const { return m_BracketId; }
         // the instanceId check is also used to determine a bg-template
         // that's why the m_map hack is here..
@@ -323,6 +323,7 @@ class BattleGround
         // Set methods:
         void SetName(char const* Name)      { m_Name = Name; }
         void SetTypeID(BattleGroundTypeId TypeID) { m_TypeID = TypeID; }
+        void SetRandomTypeID(BattleGroundTypeId TypeID) { m_RandomTypeID = TypeID; }
         // here we can count minlevel and maxlevel for players
         void SetBracket(PvPDifficultyEntry const* bracketEntry);
         void SetStatus(BattleGroundStatus Status) { m_Status = Status; }
@@ -562,6 +563,7 @@ class BattleGround
     private:
         /* Battleground */
         BattleGroundTypeId m_TypeID;
+        BattleGroundTypeId m_RandomTypeID;
         BattleGroundStatus m_Status;
         uint32 m_ClientInstanceID;                          // the instance-id which is sent to the client and without any other internal use
         uint32 m_StartTime;

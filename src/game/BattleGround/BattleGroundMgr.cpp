@@ -1554,6 +1554,8 @@ BattleGround* BattleGroundMgr::CreateNewBattleGround(BattleGroundTypeId bgTypeId
 
     // reset the new bg (set status to status_wait_queue from status_none)
     bg->Reset();
+    
+    bg->SetRandomTypeID(bgTypeId);
 
     // start the joining of the bg
     bg->SetStatus(STATUS_WAIT_JOIN);
